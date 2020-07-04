@@ -12,4 +12,6 @@ import start.portfolio.backend.entity.Product;
 public interface ProductRepositoryCustom {
 
 	List<ProductListDto> getMyProduct();
+	
+	ProductDto findProductDetail(Long id);
 }

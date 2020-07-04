@@ -11,6 +11,6 @@ import start.portfolio.backend.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long>, ProductRepositoryCustom {
 	
-	Optional<Product> findById(Long id);
+	
 
 }

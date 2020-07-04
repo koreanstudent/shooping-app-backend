@@ -8,9 +8,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
+import start.portfolio.backend.dto.ProductDto;
 import start.portfolio.backend.dto.ProductListDto;
 
 public class ProductRepositoryImpl implements ProductRepositoryCustom {
@@ -32,6 +34,25 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 				.from(product,productFile, file)
 				.where(product.id.eq(productFile.product.id).and(file.id.eq(productFile.file.id)))
 				.fetch();
+	}
+
+	@Override
+	public ProductDto findProductDetail(Long id) {
+		
+		BooleanBuilder builder = new BooleanBuilder();
+		if(id != null) {
+			builder.and(product.id.eq(id));
+		}
+		return queryFactory
+				.select(Projections.fields(ProductDto.class,
+						product.id,
+						product.productName,
+						product.productPrice,
+						product.productHtmlContent,
+						product.productStockAmount))
+				.from(product)
+				.where(builder)
+				.fetchOne();
 	}
 
 }
