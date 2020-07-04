@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import start.portfolio.backend.dto.BannerDto;
+import start.portfolio.backend.dto.ProductDto;
 import start.portfolio.backend.dto.ProductListDto;
+import start.portfolio.backend.entity.Product;
 import start.portfolio.backend.repository.BannerRepository;
 import start.portfolio.backend.repository.ProductRepository;
 
@@ -28,5 +30,10 @@ public class ProductService {
 	@Transactional
 	public List<ProductListDto> findproduct() {
 		return productRepository.getMyProduct();
+	}
+	
+	@Transactional
+	public ProductDto findById(Long id) {
+		return productRepository.findProductDetail(id);
 	}
 }

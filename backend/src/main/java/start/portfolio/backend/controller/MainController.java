@@ -29,7 +29,9 @@ public class MainController {
 	public String index() {
 		return "index.html";
 	}
-	  
+	// 상품명 검색
+	
+	// 배너 
 	@GetMapping("/banner")
 	public List<BannerDto> searchBanner() {
 		List<BannerDto> findBanners = productService.findBanner(); // 엔티티 -> DTO 변환 
@@ -37,7 +39,7 @@ public class MainController {
 		
 		return findBanners;
 	} 
-	
+	// 상품 추천
 	@GetMapping("/product/recommend")
 	public List<ProductListDto> searchRecommendProduct() {
 		List<ProductListDto> findProducts = productService.findproduct(); // 엔티티 -> DTO 변환 

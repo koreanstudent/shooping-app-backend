@@ -35,7 +35,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 				.where(product.id.eq(productFile.product.id).and(file.id.eq(productFile.file.id)))
 				.fetch();
 	}
-
+ 
 	@Override
 	public ProductDto findProductDetail(Long id) {
 		
