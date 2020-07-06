@@ -2,6 +2,7 @@ package start.portfolio.backend.repository;
 
 import static start.portfolio.backend.entity.QFile.file;
 import static start.portfolio.backend.entity.QProduct.product;
+import static start.portfolio.backend.entity.QProductBasket.productBasket;
 import static start.portfolio.backend.entity.QProductFile.productFile;
 
 import java.util.List;

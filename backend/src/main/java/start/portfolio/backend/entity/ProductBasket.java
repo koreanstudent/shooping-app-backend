@@ -31,8 +31,7 @@ public class ProductBasket {
 	@JoinColumn(name="product_id")
 	private Product product;
 	
-	public ProductBasket(Long id, int basketCount, Product product ) {
-		this.id = id;
+	public ProductBasket(int basketCount, Product product ) {
 		this.basketCount=basketCount;
 		if(product != null) {
 			setProductBasket(product);
