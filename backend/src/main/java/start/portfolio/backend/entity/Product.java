@@ -37,6 +37,9 @@ public class Product {
 	@OneToMany(mappedBy = "product")
 	private List<ProductFile> productFile = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "product")
+	private List<ProductBasket> baskets =new ArrayList<>();
+	
 	public Product(String productName, int productPrice ) {
 		this.productName = productName;
 		this.productPrice = productPrice;

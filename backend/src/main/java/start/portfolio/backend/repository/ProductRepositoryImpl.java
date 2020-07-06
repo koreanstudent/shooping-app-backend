@@ -11,9 +11,11 @@ import javax.persistence.EntityManager;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.querydsl.jpa.support.QOracle10gDialect;
 
 import start.portfolio.backend.dto.ProductDto;
 import start.portfolio.backend.dto.ProductListDto;
+import start.portfolio.backend.entity.ProductBasket;
 
 public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
@@ -53,6 +55,12 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 				.from(product)
 				.where(builder)
 				.fetchOne();
+	}
+
+	@Override
+	public ProductBasket findProductBasket() {
+		
+		return null;
 	}
 
 }

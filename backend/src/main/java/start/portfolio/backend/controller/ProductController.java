@@ -25,6 +25,13 @@ public class ProductController {
 		
 		return findProductDetail;
 	} 
+	// 장바구니
+//	@GetMapping("/product/basket")
+//	public ProductDto productBasket() {
+//		ProductDto findProductDetail = productService.findById(productId); // 엔티티 -> DTO 변환 
+//		
+//		return findProductDetail;
+//	} 
 	
 
 	
