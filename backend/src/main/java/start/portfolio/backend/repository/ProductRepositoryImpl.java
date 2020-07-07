@@ -72,7 +72,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 						product.productStockAmount))
 				.from(productBasket,product,member)
 				.where(product.id.eq(productBasket.product.id).and(member.id.eq(productBasket.member.id)))
-				.fetch();
+				.fetch(); 
 	}
 
 }
