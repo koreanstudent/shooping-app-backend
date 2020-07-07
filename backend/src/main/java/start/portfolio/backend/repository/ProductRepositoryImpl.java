@@ -1,6 +1,7 @@
 package start.portfolio.backend.repository;
 
 import static start.portfolio.backend.entity.QFile.file;
+import static start.portfolio.backend.entity.QMember.member;
 import static start.portfolio.backend.entity.QProduct.product;
 import static start.portfolio.backend.entity.QProductBasket.productBasket;
 import static start.portfolio.backend.entity.QProductFile.productFile;
@@ -14,6 +15,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.support.QOracle10gDialect;
 
+import start.portfolio.backend.dto.ProductBasketDto;
 import start.portfolio.backend.dto.ProductDto;
 import start.portfolio.backend.dto.ProductListDto;
 import start.portfolio.backend.entity.ProductBasket;
@@ -40,7 +42,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 	}
  
 	@Override
-	public ProductDto findProductDetail(Long id) {
+	public ProductDto getProductDetail(Long id) {
 		
 		BooleanBuilder builder = new BooleanBuilder();
 		if(id != null) {
@@ -59,9 +61,18 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 	}
 
 	@Override
-	public ProductBasket findProductBasket() {
+	public List<ProductBasketDto> getProductBasket() {
 		
-		return null;
+		return queryFactory
+				.select(Projections.constructor(ProductBasketDto.class,
+						productBasket.id,
+						productBasket.basketCount,
+						product.productName,
+						product.productPrice,
+						product.productStockAmount))
+				.from(productBasket,product,member)
+				.where(product.id.eq(productBasket.product.id).and(member.id.eq(productBasket.member.id)))
+				.fetch();
 	}
 
 }
