@@ -55,7 +55,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 						product.productPrice,
 						product.productHtmlContent,
 						product.productStockAmount))
-				.from(product)
+				.from(product) 
 				.where(builder)
 				.fetchOne();
 	}
