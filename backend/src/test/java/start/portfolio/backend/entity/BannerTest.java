@@ -71,6 +71,8 @@ class BannerTest {
 		
 		em.persist(productFile);
 		em.persist(productFile2);
+		
+		
 	}
 	
 	

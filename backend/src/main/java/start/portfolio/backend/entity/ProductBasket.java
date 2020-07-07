@@ -31,17 +31,26 @@ public class ProductBasket {
 	@JoinColumn(name="product_id")
 	private Product product;
 	
-	public ProductBasket(int basketCount, Product product ) {
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="member_id")
+	private Member member;
+	
+	
+	
+	public ProductBasket(int basketCount, Product product, Member member ) {
 		this.basketCount=basketCount;
-		if(product != null) {
-			setProductBasket(product);
+		if(product != null || member != null) {
+			setProductBasket(product, member);
 		}
 	}
 	
-	public void setProductBasket(Product product) {
+	public void setProductBasket(Product product, Member member) {
 		this.product = product;
+		this.member = member;
 		product.getBaskets().add(this);
+		member.getBaskets().add(this);
 	}
+
 	
 	
 }
