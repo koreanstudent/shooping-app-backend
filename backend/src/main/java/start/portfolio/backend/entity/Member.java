@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Getter 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
@@ -31,6 +31,9 @@ public class Member {
 	
 	@OneToMany(mappedBy = "member")
 	List<ProductBasket> baskets = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "member")
+	List<Comment> comments = new ArrayList<>();
 
 	public Member( String memberName, int memberPassword, int memberPhone, String memberEmail) {
 		this.memberName = memberName;

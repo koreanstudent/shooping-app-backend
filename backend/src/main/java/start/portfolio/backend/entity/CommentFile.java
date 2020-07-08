@@ -11,40 +11,39 @@ import javax.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Getter 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BannerFile {
+public class CommentFile {
 	
 	@Id @GeneratedValue
-	@Column(name ="banner_file_id")
+	@Column(name ="comment_file_id")
 	private Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "banner_id")
-	private Banner banner;
+	@JoinColumn(name = "comment_id")
+	private Comment comment;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "file_id")
 	private File file;
 
-	public BannerFile(Banner banner, File file) {
-		if(banner!=null || file != null) {
-			setBanner(banner);
+	public CommentFile(Comment comment, File file) {
+		if(comment!=null || file != null) {
+			setComment(comment);
 			setFile(file);
 		}
 	}
 	
-	public void setBanner(Banner banner) {
-		this.banner = banner;
-		banner.getBannerFile().add(this);
+	public void setComment(Comment comment) {
+		this.comment = comment;
+		comment.getCommentFile().add(this);
 	}
 	
 	public void setFile(File file) {
 		this.file = file;
-		file.getBannerFile().add(this);
+		file.getCommentFile().add(this);
 	}
 	
 	

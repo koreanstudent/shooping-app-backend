@@ -9,11 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Getter 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class File {
 
 	@Id @GeneratedValue
@@ -29,6 +32,9 @@ public class File {
 	
 	@OneToMany(mappedBy = "file")
 	private List<ProductFile> productFile = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "file")
+	private List<CommentFile> commentFile = new ArrayList<>();
 
 	public File(String fileName, int fileSize, String filePath) {
 		this.fileName = fileName;

@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Getter 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Banner {
 	
