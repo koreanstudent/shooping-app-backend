@@ -12,13 +12,15 @@ public class ProductDto {
 	private int productPrice;
 	private int productStockAmount;
 	private String productHtmlContent;
+	private int raiting;
 	
-	public ProductDto(Long id, String productName, int productPrice, int productStockAmount, String productHtmlContent ) {
+	public ProductDto(Long id, String productName, int productPrice, int productStockAmount, String productHtmlContent, int raiting ) {
 		this.id = id;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productStockAmount = productStockAmount;
 		this.productHtmlContent = productHtmlContent;
+		this.raiting = raiting;
 	
 	}
 	

@@ -26,7 +26,7 @@ public class Member {
 	
 	private String memberName;
 	private int memberPassword;
-	private int memberPhone;
+	private String memberPhone;
 	private String memberEmail;
 	
 	@OneToMany(mappedBy = "member")
@@ -35,7 +35,7 @@ public class Member {
 	@OneToMany(mappedBy = "member")
 	List<Comment> comments = new ArrayList<>();
 
-	public Member( String memberName, int memberPassword, int memberPhone, String memberEmail) {
+	public Member( String memberName, int memberPassword, String memberPhone, String memberEmail) {
 		this.memberName = memberName;
 		this.memberPassword = memberPassword;
 		this.memberPhone = memberPhone;

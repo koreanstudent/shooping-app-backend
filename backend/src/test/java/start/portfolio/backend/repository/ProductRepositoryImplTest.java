@@ -1,8 +1,9 @@
 package start.portfolio.backend.repository;
 
+import static start.portfolio.backend.entity.QComment.comment;
+import static start.portfolio.backend.entity.QMember.member;
 import static start.portfolio.backend.entity.QProduct.product;
 import static start.portfolio.backend.entity.QProductBasket.productBasket;
-import static start.portfolio.backend.entity.QMember.member;
 
 import java.util.List;
 
@@ -15,10 +16,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import start.portfolio.backend.dto.ProductBasketDto;
+import start.portfolio.backend.dto.ProductDto;
+import start.portfolio.backend.entity.Comment;
 import start.portfolio.backend.entity.Member;
 import start.portfolio.backend.entity.Product;
 import start.portfolio.backend.entity.ProductBasket;
@@ -38,7 +42,8 @@ class ProductRepositoryImplTest {
 	public void test() {
 
 		queryFactory = new JPAQueryFactory(em);
-		Member member = new Member("이창현", 11, 01066722131, "hn12344@naver.com");
+		
+		Member member = new Member("철", 11, "010101010101", "hn12344@naver.com");
 				
 		em.persist(member);
 		Product product = new Product("상품1", 1000,100,"내용1");
@@ -51,9 +56,37 @@ class ProductRepositoryImplTest {
 		ProductBasket productBasket = new ProductBasket(100,product,member);
 		ProductBasket productBasket2 = new ProductBasket(200,product2,member);
 		
-		
 		em.persist(productBasket);
 		em.persist(productBasket2);
+		
+		Comment comment = new Comment("내용1", 4, member, product);
+		Comment comment2 = new Comment("내용122", 5555, member, product);
+		
+		em.persist(comment);
+		em.persist(comment2);
+		
+
+	}
+	
+	@Test
+	public void getProductDetail() {
+		BooleanBuilder builder = new BooleanBuilder();
+	
+		List<ProductDto> result = queryFactory
+				.select(Projections.fields(ProductDto.class,
+						product.id,
+						product.productName,
+						product.productPrice,
+						product.productHtmlContent,
+						product.productStockAmount,
+						comment.raiting
+						))
+				.from(product,comment) 
+	
+				.fetch();
+		
+		System.out.println("result >> getProductDetail" + result);
+		
 	}
 	
 	@Test
