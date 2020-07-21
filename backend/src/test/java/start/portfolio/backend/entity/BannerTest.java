@@ -55,8 +55,11 @@ class BannerTest {
 		
 		File file2 = new File("두번째 파일 이름",2000,"파일경로2");
 		
+		File file3 = new File("세번째 파일 이름",4000,"파일경로5");
+		
 		em.persist(file);
 		em.persist(file2);
+		em.persist(file3);
 		
 		BannerFile bannerfile = new BannerFile(banner,file);
 		BannerFile bannerfile2 = new BannerFile(banner2,file2);
@@ -66,11 +69,15 @@ class BannerTest {
 		em.persist(bannerfile2);
 		
 		ProductFile productFile = new ProductFile(product,file);
+		ProductFile productFile1 = new ProductFile(product2,file);
 		ProductFile productFile2 = new ProductFile(product2,file2);
+		ProductFile productFile3 = new ProductFile(product2,file3);
 		
 		
 		em.persist(productFile);
+		em.persist(productFile1);
 		em.persist(productFile2);
+		em.persist(productFile3);
 		
 		
 	}

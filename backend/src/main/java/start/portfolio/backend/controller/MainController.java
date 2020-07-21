@@ -20,17 +20,6 @@ public class MainController {
 	
 	private final ProductService productService;
 
-	@GetMapping("/api/hello")
-	public String hello() {
-		return "현재 서버시간은  ??" + new Date();
-	}
-	 
-	@GetMapping({"/", "/error"})
-	public String index() {
-		return "index.html";
-	}
-	// 상품명 검색
-	
 	// 배너 
 	@GetMapping("/banner")
 	public List<BannerDto> searchBanner() {

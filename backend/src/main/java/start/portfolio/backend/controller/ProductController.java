@@ -25,8 +25,8 @@ public class ProductController {
 
 	// 상품 상세
 	@GetMapping("/product/{id}")
-	public ProductDto productDetail(@PathVariable("id") Long productId) {
-		ProductDto findProductDetail = productService.findById(productId); // 엔티티 -> DTO 변환 
+	public List<ProductDto> productDetail(@PathVariable("id") Long productId) {
+		List<ProductDto> findProductDetail = productService.findById(productId); // 엔티티 -> DTO 변환 
 		
 		return findProductDetail;
 	} 

@@ -12,7 +12,7 @@ public interface ProductRepositoryCustom {
 
 	List<ProductListDto> getMyProduct();
 	 
-	ProductDto getProductDetail(Long id);
+	List<ProductDto> getProductDetail(Long id);
 	
 	List<ProductBasketDto> getProductBasket();
 }

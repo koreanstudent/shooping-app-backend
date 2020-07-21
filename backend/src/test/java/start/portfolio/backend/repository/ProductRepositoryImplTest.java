@@ -1,9 +1,12 @@
 package start.portfolio.backend.repository;
 
-import static start.portfolio.backend.entity.QComment.comment;
-import static start.portfolio.backend.entity.QMember.member;
 import static start.portfolio.backend.entity.QProduct.product;
 import static start.portfolio.backend.entity.QProductBasket.productBasket;
+import static start.portfolio.backend.entity.QMember.member;
+import static start.portfolio.backend.entity.QComment.comment;
+import static start.portfolio.backend.entity.QFile.file;
+import static start.portfolio.backend.entity.QCommentFile.commentFile;
+import static start.portfolio.backend.entity.QProductFile.productFile;
 
 import java.util.List;
 
@@ -43,7 +46,7 @@ class ProductRepositoryImplTest {
 
 		queryFactory = new JPAQueryFactory(em);
 		
-		Member member = new Member("철", 11, "010101010101", "hn12344@naver.com");
+		Member member = new Member("철", 11, "011", "hn12344@naver.com");
 				
 		em.persist(member);
 		Product product = new Product("상품1", 1000,100,"내용1");
@@ -53,11 +56,11 @@ class ProductRepositoryImplTest {
 		em.persist(product2);
 //		
 		
-		ProductBasket productBasket = new ProductBasket(100,product,member);
-		ProductBasket productBasket2 = new ProductBasket(200,product2,member);
-		
-		em.persist(productBasket);
-		em.persist(productBasket2);
+//		ProductBasket productBasket = new ProductBasket(100,product,member);
+//		ProductBasket productBasket2 = new ProductBasket(200,product2,member);
+//		
+//		em.persist(productBasket);
+//		em.persist(productBasket2);
 		
 		Comment comment = new Comment("내용1", 4, member, product);
 		Comment comment2 = new Comment("내용122", 5555, member, product);
@@ -68,26 +71,7 @@ class ProductRepositoryImplTest {
 
 	}
 	
-	@Test
-	public void getProductDetail() {
-		BooleanBuilder builder = new BooleanBuilder();
 	
-		List<ProductDto> result = queryFactory
-				.select(Projections.fields(ProductDto.class,
-						product.id,
-						product.productName,
-						product.productPrice,
-						product.productHtmlContent,
-						product.productStockAmount,
-						comment.raiting
-						))
-				.from(product,comment) 
-	
-				.fetch();
-		
-		System.out.println("result >> getProductDetail" + result);
-		
-	}
 	
 	@Test
 	public void ProductBsket() {

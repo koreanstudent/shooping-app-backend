@@ -33,7 +33,7 @@ public class ProductService {
 	}
 	
 	@Transactional
-	public ProductDto findById(Long id) {
+	public List<ProductDto> findById(Long id) {
 		return productRepository.getProductDetail(id);
 	}
 	@Transactional
