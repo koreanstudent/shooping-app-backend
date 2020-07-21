@@ -20,7 +20,7 @@ public class MainController {
 	
 	private final ProductService productService;
 
-	// 배너 
+	// 배너  
 	@GetMapping("/banner")
 	public List<BannerDto> searchBanner() {
 		List<BannerDto> findBanners = productService.findBanner(); // 엔티티 -> DTO 변환 
