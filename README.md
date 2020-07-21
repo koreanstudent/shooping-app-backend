@@ -3,6 +3,7 @@
 
 ![Untitled%20Diagram](Untitled%20Diagram.png)
 
-# shooping-app-backend
-JPA + SPRING DATA JPA + QUERYDSL
+
+# REST API 설계
+
 
