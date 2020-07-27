@@ -46,7 +46,7 @@ class ProductRepositoryImplTest {
 
 		queryFactory = new JPAQueryFactory(em);
 		
-		Member member = new Member("철", 11, "011", "hn12344@naver.com");
+		Member member = new Member("철", "11", "011", "hn12344@naver.com");
 				
 		em.persist(member);
 		Product product = new Product("상품1", 1000,100,"내용1");
