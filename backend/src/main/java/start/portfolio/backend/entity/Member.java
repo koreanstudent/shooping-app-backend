@@ -25,7 +25,7 @@ public class Member {
 	private Long id;
 	
 	private String memberName;
-	private int memberPassword;
+	private String memberPassword;
 	private String memberPhone;
 	private String memberEmail;
 	
@@ -35,11 +35,17 @@ public class Member {
 	@OneToMany(mappedBy = "member")
 	List<Comment> comments = new ArrayList<>();
 
-	public Member( String memberName, int memberPassword, String memberPhone, String memberEmail) {
+	public Member( String memberName, String memberPassword, String memberPhone, String memberEmail) {
 		this.memberName = memberName;
 		this.memberPassword = memberPassword;
 		this.memberPhone = memberPhone;
 		this.memberEmail = memberEmail;
+	}
+	
+	public Member( String memberName, String memberPassword) {
+		this.memberName = memberName;
+		this.memberPassword = memberPassword;
+
 	}
 	
 	

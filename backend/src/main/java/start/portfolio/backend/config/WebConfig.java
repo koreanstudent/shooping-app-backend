@@ -1,4 +1,4 @@
-package start.portfolio.backend;
+package start.portfolio.backend.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
